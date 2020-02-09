@@ -1,0 +1,27 @@
+<!--about.wxml-->
+<view class="container">
+  <view class="header">
+  <image class="logo" src="/images/logo.png" mode="widthFix"></image>
+  <!--
+    <view class="black-cover"></view>
+    
+    <text class="title">推手号</text>-->
+  </view>
+  <view class="content">
+    <view class="version">
+      <view class="version-title">
+        <text class="title-name">推手号</text>
+        <text class="version-text">v2.0.6</text>
+        <text class="version-text">公测</text>
+      </view>
+      <!-- <view bindtap="toggleLog">
+        <text class="version-log-link" wx:if="{{!showLog}}">更新日志</text> 
+        <text class="version-log-link" wx:else>简介</text> 
+      </view> -->
+    </view>
+    <view class="describe">
+        <text class="desc-title">简介</text>
+        <text class="desc-content">推手号专注于大量兼职人员与商家合作的撮合平台。为商家产品提供最大化的推广及转化成交服务，以及让更多的兼职人员参与获取收益，是团队的核心使命。知易行难！我们将一以贯之执行。上推手号，携手与你共同成长！</text>
+    </view>
+  </view>
+</view>

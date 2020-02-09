@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="background-layer"></div>
+  <image mode="aspectFill" class="logo" src="/images/logo.png"></image>
+  <p class="welcome animated fadeInDown">推手号</p>
+  <p class="sub-text animated fadeInDown">上推手号，携手共同成长</p>
+  <div class="loader">
+    <div class="dot"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+  </div>
+  <div class="row footer">
+    <button bindgetuserinfo="onLogin" open-type="getUserInfo" class="start">
+      点我开启小程序
+    </button>
+  </div>
+</div>

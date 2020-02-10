@@ -7,6 +7,8 @@
     "pages/auth/login/login",
     "pages/category/category",
     "pages/goods/goods",
+    "pages/order/order",
+    "pages/orderDetail/orderDetail",
     "pages/feedback/feedback",
     "pages/about/about",
     "pages/logs/logs"

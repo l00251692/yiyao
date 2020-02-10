@@ -16,7 +16,7 @@ Page({
       ],
       goodsBrief:'快克感冒颗粒，快速缓解感冒症状',
       counterPrice:12,
-
+      retailPrice:9.99,
 
     },
     groupon: [], //该商品支持的团购规格
@@ -27,16 +27,24 @@ Page({
       { attribute: '规格', value: '128g/盒' },
     ],
     issueList: [],
-    comment: [ 
-      { avatar: '/images/tmp/user.png', nickname: 'xxxdefined', addTime: '2019-12-10', content: '见效很快', picList: ['/images/tmp/lianhua.png']},
-      { avatar: '/images/tmp/user.png', nickname: 'xxxdefined', addTime: '2019-12-10', content: '很不错，这是一条回复'},
-    ],
+    comment: {
+      count: 2,
+      data: [{ avatar: '/images/tmp/user.png', nickname: 'xxxdefined', addTime: '2019-12-10', content: '见效很快', picList: ['/images/tmp/lianhua.png'] },
+        { avatar: '/images/tmp/user.png', nickname: 'xxxdefined', addTime: '2019-12-10', content: '很不错，这是一条回复' }]
+    },
     brand: { id:1, name:999 },
     specificationList: [
-      { name: '数量', valueList: [{ id: 1, value: '1盒' }, { id: 2, value: '3盒' }, { id: 3, value: '5盒' }]},
-      { name: '套餐', valueList: [{ id: 1, value: '套餐一' }, { id: 2, value: '套餐二' }]}
+      { name: '测试', valueList: [{ id: 1, specification: '测试', value: '1盒', checked: false }, { id: 2, specification: '测试', value: '2盒' }, { id: 3, specification: '测试', value: '5盒' }]},
+      { name: '套餐', valueList: [{ id: 1, specification: '套餐', value: '套餐一' }, { id: 2, specification: '套餐',  value: '套餐二' }]}
     ],
-    productList: [],
+    productList: [
+      { specifications: '1盒,套餐一', number: 99, price: 5.99 },
+      { specifications: '2盒,套餐一', number: 99, price: 6.99 },
+      { specifications: '5盒,套餐一', number: 99, price: 7.99},
+      { specifications: '1盒,套餐二', number: 99, price: 8.99},
+      { specifications: '2盒,套餐二', number: 99, price: 9.99},
+      { specifications: '5盒,套餐二', number: 0, price: 5.99 }
+    ],
     relatedGoods: [],
     cartGoodsCount: 0,
     userHasCollect: 0,
@@ -274,6 +282,7 @@ Page({
     let specValueId = event.currentTarget.dataset.valueId;
 
     //判断是否可以点击
+    console.log('specName:' + specName + specValueId)
 
     //TODO 性能优化，可在wx:for中添加index，可以直接获取点击的属性名和属性值，不用循环
     let _specificationList = this.data.specificationList;
@@ -333,7 +342,7 @@ Page({
       }
       checkedValues.push(_checkedObj);
     }
-
+    console.log('checkedValues:' + JSON.stringify(checkedValues))
     return checkedValues;
   },
 
@@ -391,7 +400,7 @@ Page({
         console.error('规格所对应货品不存在');
         return;
       }
-
+      console.log('checkedProductArray:' + JSON.stringify(checkedProductArray))
       let checkedProduct = checkedProductArray[0];
       if (checkedProduct.number > 0) {
         this.setData({
@@ -406,6 +415,7 @@ Page({
       }
 
     } else {
+      console.log('isCheckedAllSpec false')
       this.setData({
         checkedSpecText: '规格数量选择',
         checkedSpecPrice: this.data.goods.retailPrice,
@@ -417,6 +427,7 @@ Page({
 
   // 获取选中的产品（根据规格）
   getCheckedProductItem: function(key) {
+    console.log('getCheckedProductItem:' + key)
     return this.data.productList.filter(function(v) {
       if (v.specifications.toString() == key.toString()) {
         return true;
@@ -446,7 +457,7 @@ Page({
     
     let that = this;
 
-    WxParse.wxParse('goodsDetail', 'html', detail, that);
+    //WxParse.wxParse('goodsDetail', 'html', detail, that);
     
     wx.getSetting({
         success: function (res) {
@@ -618,7 +629,7 @@ Page({
       if (!checkedProductArray || checkedProductArray.length <= 0) {
         //找不到对应的product信息，提示没有库存
         wx.showToast({
-          image: '/static/images/icon_error.png',
+          image: '/images/assets/icon_error.png',
           title: '没有库存'
         });
         return false;
@@ -628,12 +639,31 @@ Page({
       //验证库存
       if (checkedProduct.number <= 0) {
         wx.showToast({
-          image: '/static/images/icon_error.png',
+          image: '/images/assets/icon_error.png',
           title: '没有库存'
         });
         return false;
       }
 
+      wx.showToast({
+        title: '添加成功'
+      });
+      /*
+      
+      util.fetch({
+        url: 'cart/addCartWx',
+        data:{
+          goodsId: this.data.goods.id,
+          number: this.data.number,
+          productId: checkedProduct.id
+        },
+        success(res){
+          console.log('add cart ok')
+        },
+        error(res){
+          console.log('add cart ok')
+        }
+      })
       //添加到购物车
       util.request(api.CartAdd, {
           goodsId: this.data.goods.id,
@@ -661,13 +691,13 @@ Page({
             }
           } else {
             wx.showToast({
-              image: '/static/images/icon_error.png',
+              image: '/images/assets/icon_error.png',
               title: _res.errmsg,
               mask: true
             });
           }
 
-        });
+        });*/
     }
 
   },

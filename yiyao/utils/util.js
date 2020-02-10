@@ -219,6 +219,49 @@ export function getCurrentPage() {
   return pages[pages.length - 1]
 }
 
+/**
+ * 封封微信的的request
+ */
+export function request(url, data = {}, method = "POST") {
+  return new Promise(function (resolve, reject) {
+    wx.request({
+      url: `https://${host}/${url}`,
+      data: data,
+      method: method,
+      header: {
+        'content-type': 'application/x-www-form-urlencoded'
+      },
+      success: function (res) {
+
+        if (res.statusCode == 200) {
+
+          if (res.data.errno == 501) {
+            // 清除登录相关内容
+            try {
+              wx.removeStorageSync('userInfo');
+              wx.removeStorageSync('token');
+            } catch (e) {
+              // Do something when catch error
+            }
+            // 切换到登录页面
+            wx.navigateTo({
+              url: '/pages/auth/login/login'
+            });
+          } else {
+            resolve(res.data);
+          }
+        } else {
+          reject(res.errMsg);
+        }
+
+      },
+      fail: function (err) {
+        reject(err)
+      }
+    })
+  });
+}
+
 export function fetch(options) {
   wx.request({
     url: `https://${host}/${options.url}`,
@@ -288,6 +331,13 @@ export function connectWebsocket(options) {
     },
   })
   
+}
+
+export function showErrorToast(msg) {
+  wx.showToast({
+    title: msg,
+    image: '/images/assets/icon_error.png'
+  })
 }
 
 // 提示框

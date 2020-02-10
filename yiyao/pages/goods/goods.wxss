@@ -666,6 +666,17 @@
   /* border-top: 2px solid #f4f4f4; *//* border-bottom: 2px solid #f4f4f4;  */
 }
 
+.bottom-btn .n {
+  float: left;
+  background: #ababab;
+  height: 100rpx;
+  line-height: 96rpx;
+  flex: 1;
+  text-align: center;
+  color: #fff;
+  /* border-top: 2px solid #f4f4f4; *//* border-bottom: 2px solid #f4f4f4;  */
+}
+
 .bottom-btn .r {
   border: 1px solid #f48f18;
   background: #f48f18;

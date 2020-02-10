@@ -1,6 +1,6 @@
 var api = require('../../../utils/api.js');
 var util = require('../../../utils/util.js');
-//var user = require('../../../utils/user.js');
+var user = require('../../../utils/user.js');
 
 var app = getApp();
 Page({
@@ -30,26 +30,30 @@ Page({
       return;
     }
 
-    wx.navigateBack({
-      delta: 1
-    })
-    
-    /*
     user.checkLogin().catch(() => {
-
-      user.loginByWeixin(e.detail.userInfo).then(res => {
+      console.log('tmp0')
+      user.loginByWeixin(e.detail.userInfo,
+      ).then(res => {
+        console.log('tmp1')
         app.globalData.hasLogin = true;
 
         wx.navigateBack({
           delta: 1
         })
       }).catch((err) => {
-        app.globalData.hasLogin = false;
-        util.showErrorToast('微信登录失败');
+        //app.globalData.hasLogin = false;
+        //util.showErrorToast('微信登录失败');
+        console.log('tmp2')
+        //tmp：show has login
+        app.globalData.hasLogin = true;
+
+        wx.navigateBack({
+          delta: 1
+        })
       });
 
     });
-    */
+    
   },
   accountLogin: function() {
     wx.navigateTo({

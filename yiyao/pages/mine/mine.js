@@ -11,16 +11,15 @@ Page({
       unrecv: 0,
       uncomment: 0
     },
-    haslogin: false,
+    hasLogin: false,
     phone:"未绑定"
   },
   onLoad: function(options) {
     //获取用户的登录信息
-    if (wx.getStorageSync('haslogin'))
-    {
+    if (app.globalData.hasLogin) {
       this.setData({
-        haslogin:true,
-        userInfo:wx.getStorageSync('userInfo')
+        hasLogin: true,
+        userInfo: wx.getStorageSync('userInfo')
       })
     }
   },
@@ -40,6 +39,7 @@ Page({
 
   
   goLogin() {
+    console.log("" + this.data.hasLogin)
     if (!this.data.hasLogin) {
       wx.navigateTo({
         url: "/pages/auth/login/login"

@@ -51,6 +51,7 @@
     <view class="t">{{checkedSpecText}}</view>
     <image class="i" src="/images/assets/address_right.png" background-size="cover"></image>
   </view>
+  <!-- 
   <view class="comments" wx:if="{{comment.count > 0}}">
     <view class="h">
       <navigator url="/pages/comment/comment?valueId={{goods.id}}&type=0">
@@ -76,6 +77,7 @@
       </view>
     </view>
   </view>
+  -->
   <view class="goods-attr">
     <view class="t">商品参数</view>
     <view class="l">
@@ -186,9 +188,10 @@
 
 <!-- 底部按钮 -->
 <view class="bottom-btn">
+  <!-- 
   <view class="l l-collect" bindtap="addCollectOrNot" wx:if="{{!isGroupon}}">
     <image class="icon" src="{{ collectImage }}"></image>
-  </view>
+  </view>-->
   <view class="l l-cart" wx:if="{{!isGroupon}}">
     <view class="box">
       <text class="cart-count">{{cartGoodsCount}}</text>

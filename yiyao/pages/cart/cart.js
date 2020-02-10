@@ -1,12 +1,15 @@
 var util = require('../../utils/util.js');
 var api = require('../../utils/api.js');
-//var user = require('../../utils/user.js');
+var user = require('../../utils/user.js');
 
 var app = getApp();
 
 Page({
   data: {
-    cartGoods: [],
+    cartGoods: [
+      { productId:10001, picUrl: '/images/tmp/lianhua.png', goodsName: '莲花青云胶囊', number: 1, goodsSpecificationValues: '1盒套餐一', price: 5.99},
+      { productId: 10002, picUrl: '/images/tmp/lianhua.png', goodsName: '快壳胶囊', number: 1, goodsSpecificationValues: '2盒套餐一', price: 8.99 },
+    ],
     cartTotal: {
       "goodsCount": 0,
       "goodsAmount": 0.00,
@@ -32,15 +35,15 @@ Page({
   },
   onShow: function() {
     // 页面显示
-    /*
+    
     if (app.globalData.hasLogin) {
-      this.getCartList();
+      //this.getCartList();
     }
 
     this.setData({
       hasLogin: app.globalData.hasLogin
     });
-    */
+    
   },
   onHide: function() {
     // 页面隐藏
@@ -91,6 +94,7 @@ Page({
     let productIds = [];
     productIds.push(that.data.cartGoods[itemIndex].productId);
     if (!this.data.isEditCart) {
+      /*
       util.request(api.CartChecked, {
         productIds: productIds,
         isChecked: that.data.cartGoods[itemIndex].checked ? 0 : 1
@@ -105,7 +109,7 @@ Page({
         that.setData({
           checkedAllStatus: that.isCheckedAll()
         });
-      });
+      });*/
     } else {
       //编辑状态
       let tmpCartData = this.data.cartGoods.map(function(element, index, array) {

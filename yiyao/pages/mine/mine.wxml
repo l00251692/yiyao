@@ -45,17 +45,17 @@
   <view class='separate'></view>
 
   <view class="weui-cells">
-    <navigator url="/pages/wallet/wallet?balance={{balance}}" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+    <view  bindtap='goAddress' class="weui-cell weui-cell_access" hover-class="weui-cell_active" >
       <image class="btn-icon" src="/images/user/address.png"></image>
       <view class="weui-cell__bd">地址管理</view>
       <view class="weui-cell__ft weui-cell__ft_in-access"></view>
-    </navigator>
+    </view>
 
-    <navigator url="/pages/feedback/feedback" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+    <view bindtap='goFeedback'  class="weui-cell weui-cell_access" hover-class="weui-cell_active">
       <image class="btn-icon" src="/images/user/feedback.png"></image>
       <view class="weui-cell__bd">意见反馈</view>
       <view class="weui-cell__ft weui-cell__ft_in-access"></view>
-    </navigator>
+    </view>
 
     <view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
       <button class="contact" open-type="contact">

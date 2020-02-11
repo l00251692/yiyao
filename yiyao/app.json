@@ -8,7 +8,11 @@
     "pages/category/category",
     "pages/goods/goods",
     "pages/order/order",
+    "pages/checkout/checkout",
+    "pages/payResult/payResult",
     "pages/orderDetail/orderDetail",
+    "pages/address/address",
+    "pages/addressAdd/addressAdd",
     "pages/feedback/feedback",
     "pages/about/about",
     "pages/logs/logs"

@@ -211,7 +211,7 @@ Page({
               wx.showToast({
                 title: '确认收货成功！'
               });
-              util.redirect('/pages/ucenter/order/order');
+              util.redirect('/pages/order/order');
             } else {
               util.showErrorToast(res.errmsg);
             }

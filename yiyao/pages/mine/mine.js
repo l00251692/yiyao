@@ -49,7 +49,7 @@ Page({
   goOrder() {
     if (this.data.hasLogin) {
       wx.navigateTo({
-        url: "/pages/ucenter/order/order"
+        url: "/pages/order/order"
       });
     } else {
       wx.navigateTo({
@@ -72,6 +72,30 @@ Page({
         fail: function (res) { },
         complete: function (res) { },
       })
+    } else {
+      wx.navigateTo({
+        url: "/pages/auth/login/login"
+      });
+    };
+  },
+
+  goAddress() {
+    if (this.data.hasLogin) {
+      wx.navigateTo({
+        url: "/pages/address/address"
+      });
+    } else {
+      wx.navigateTo({
+        url: "/pages/auth/login/login"
+      });
+    };
+  },
+
+  goFeedback(e) {
+    if (this.data.hasLogin) {
+      wx.navigateTo({
+        url: "/pages/feedback/feedback"
+      });
     } else {
       wx.navigateTo({
         url: "/pages/auth/login/login"

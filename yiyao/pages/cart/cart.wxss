@@ -468,7 +468,7 @@ page {
   border-top-right-radius: 50rpx;
   border-bottom-right-radius: 50rpx;
   letter-spacing: 3rpx;
-  background-image: linear-gradient(to right, #9a9ba1 0%, #9a9ba1 100%);
+  background-color: #1e8cd4;
 }
 
 .action_btn_area .delete {
